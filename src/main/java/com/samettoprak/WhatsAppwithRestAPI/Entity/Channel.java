@@ -1,5 +1,8 @@
 package com.samettoprak.WhatsAppwithRestAPI.Entity;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -11,6 +14,7 @@ import java.util.List;
 public class Channel {
     @Id
     String id;
+    @NotNull @Min(2) @Max(20)
     String channelName;
     User channelAdmin;
     List<User> users;
