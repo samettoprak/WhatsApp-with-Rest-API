@@ -22,6 +22,7 @@ public class User {
     String phoneNumber;
     @Email String email;
     List<Channel> channels;
-    List<Message> messages;
+    List<Contact> contacts;
+    //durum ekle
 
 }

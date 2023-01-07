@@ -15,9 +15,6 @@ import java.time.LocalDateTime;
 public class Message {
     @Id
     String id;
-    String ownerId;
-    @NotNull @Min(2) @Max(20)
-    String ownerName;
     @NotNull @Min(1) @Max(200)
     String content;
     LocalDateTime dateTime;
