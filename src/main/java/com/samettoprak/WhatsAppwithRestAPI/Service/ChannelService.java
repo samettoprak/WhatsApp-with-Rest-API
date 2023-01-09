@@ -6,9 +6,9 @@ import com.samettoprak.WhatsAppwithRestAPI.Entity.Channel;
 import com.samettoprak.WhatsAppwithRestAPI.Entity.Message;
 import com.samettoprak.WhatsAppwithRestAPI.Entity.Response;
 import com.samettoprak.WhatsAppwithRestAPI.Entity.User;
+import com.samettoprak.WhatsAppwithRestAPI.ServiceInterfaces.IChannelService;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Executable;
 import java.util.List;
 
 @Service

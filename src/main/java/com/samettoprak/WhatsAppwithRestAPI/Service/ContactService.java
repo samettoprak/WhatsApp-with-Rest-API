@@ -6,6 +6,7 @@ import com.samettoprak.WhatsAppwithRestAPI.DAO.UserRepository;
 import com.samettoprak.WhatsAppwithRestAPI.Entity.Contact;
 import com.samettoprak.WhatsAppwithRestAPI.Entity.Message;
 import com.samettoprak.WhatsAppwithRestAPI.Entity.Response;
+import com.samettoprak.WhatsAppwithRestAPI.ServiceInterfaces.IContactService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
