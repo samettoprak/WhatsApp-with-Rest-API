@@ -1,4 +1,4 @@
-package com.samettoprak.WhatsAppwithRestAPI.Service;
+package com.samettoprak.WhatsAppwithRestAPI.ServiceInterfaces;
 
 import com.samettoprak.WhatsAppwithRestAPI.Entity.Contact;
 import com.samettoprak.WhatsAppwithRestAPI.Entity.Message;
