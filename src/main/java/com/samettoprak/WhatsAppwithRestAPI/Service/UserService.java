@@ -112,6 +112,12 @@ public class UserService implements IUserService {
     @Override
     public Response<User> addContactToUser(String contactId, String userId) {
         try {
+            var result = userRepository.findById(userId).orElse(null);
+            if (result != null) {
+                var list = result.getContacts();
+                list.add();
+                //burası body olarak almalı contactı id olarak değil!
+            }
 
         }catch (Exception ex){
             return Response.Fail(ex.getMessage());
@@ -127,7 +133,7 @@ public class UserService implements IUserService {
                 if (contacts.contains(contactRepository.findById(contactId))) {
                     return Response.Succsess(true);
                 }else return Response.Fail("Contact Not Found.");
-            }
+            }else return Response.Fail("User Not Found.");
 
         }catch (Exception ex){
             return Response.Fail(ex.getMessage());
