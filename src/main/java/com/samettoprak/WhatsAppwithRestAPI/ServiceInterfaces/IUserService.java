@@ -1,5 +1,6 @@
 package com.samettoprak.WhatsAppwithRestAPI.ServiceInterfaces;
 
+import com.samettoprak.WhatsAppwithRestAPI.Entity.Contact;
 import com.samettoprak.WhatsAppwithRestAPI.Entity.Response;
 import com.samettoprak.WhatsAppwithRestAPI.Entity.User;
 
@@ -15,7 +16,7 @@ public interface IUserService {
     Response<User> addChannelToUser(String userId,String channelId);
     Response<Boolean> deleteChannelFromUser(String userId,String channelId);
 
-    Response<User> addContactToUser(String contactId,String userId);
+    Response<User> addContactToUser(Contact contact, String userId);
     //bunu 2 kişi için aynı anda yapmak lazım.alttakini de
     Response<Boolean> deleteContactFromUser(String contactId,String userId);
 

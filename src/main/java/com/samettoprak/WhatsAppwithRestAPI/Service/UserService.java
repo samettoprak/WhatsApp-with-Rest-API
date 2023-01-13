@@ -3,6 +3,7 @@ package com.samettoprak.WhatsAppwithRestAPI.Service;
 import com.samettoprak.WhatsAppwithRestAPI.DAO.ChannelRepository;
 import com.samettoprak.WhatsAppwithRestAPI.DAO.ContactRepository;
 import com.samettoprak.WhatsAppwithRestAPI.DAO.UserRepository;
+import com.samettoprak.WhatsAppwithRestAPI.Entity.Contact;
 import com.samettoprak.WhatsAppwithRestAPI.Entity.Response;
 import com.samettoprak.WhatsAppwithRestAPI.Entity.User;
 import com.samettoprak.WhatsAppwithRestAPI.ServiceInterfaces.IUserService;
@@ -110,15 +111,15 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Response<User> addContactToUser(String contactId, String userId) {
+    public Response<User> addContactToUser(Contact contact, String userId) {
         try {
             var result = userRepository.findById(userId).orElse(null);
             if (result != null) {
                 var list = result.getContacts();
-                list.add();
-                //burası body olarak almalı contactı id olarak değil!
-            }
-
+                list.add(contact);
+                result.setContacts(list);
+                return Response.Succsess(userRepository.save(result));
+            }else return Response.Fail("User Not Found.");
         }catch (Exception ex){
             return Response.Fail(ex.getMessage());
         }
