@@ -2,6 +2,7 @@ package com.samettoprak.WhatsAppwithRestAPI.Service;
 
 import com.samettoprak.WhatsAppwithRestAPI.DAO.ChannelRepository;
 import com.samettoprak.WhatsAppwithRestAPI.DAO.MessageRepository;
+import com.samettoprak.WhatsAppwithRestAPI.DAO.UserRepository;
 import com.samettoprak.WhatsAppwithRestAPI.Entity.Channel;
 import com.samettoprak.WhatsAppwithRestAPI.Entity.Message;
 import com.samettoprak.WhatsAppwithRestAPI.Entity.Response;
@@ -15,10 +16,13 @@ import java.util.List;
 public class ChannelService implements IChannelService {
     ChannelRepository channelRepository;
     MessageRepository messageRepository;
+    private final UserRepository userRepository;
 
-    public ChannelService(ChannelRepository channelRepository, MessageRepository messageRepository) {
+    public ChannelService(ChannelRepository channelRepository, MessageRepository messageRepository,
+                          UserRepository userRepository) {
         this.channelRepository = channelRepository;
         this.messageRepository = messageRepository;
+        this.userRepository = userRepository;
     }
 
 
@@ -118,14 +122,18 @@ public class ChannelService implements IChannelService {
     }
 
     @Override
-    public Response<Channel> addUserToChannel(String channelId, User user) {
+    public Response<Channel> addUserToChannel(String channelId,String userId) {
         try {
             var result = channelRepository.findById(channelId).orElse(null);
             if (result != null) {
-                var list = result.getUsers();
-                list.add(user);
-                result.setUsers(list);
-                return Response.Succsess(channelRepository.save(result));
+                var user = userRepository.findById(userId).orElse(null);
+                if (user != null) {
+                    var list = result.getUsers();
+                    list.add(user);
+                    result.setUsers(list);
+                    return Response.Succsess(channelRepository.save(result));
+                }else return Response.Fail("User Not Found.");
+
             } else return Response.Fail("Channel Not Found.");
         } catch (Exception ex) {
             return Response.Fail(ex.getMessage());
