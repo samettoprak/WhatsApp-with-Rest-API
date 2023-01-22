@@ -15,7 +15,7 @@ public interface IChannelService {
     Response<Boolean> deleteChannel(String channelId);
     Response<Channel> addMessageToChannel(String channelId, Message message);
     Response<Boolean> deleteMessageFromChannel(String channelId,String messageId);
-    Response<Channel> addUserToChannel(String channelId, User user);
+    Response<Channel> addUserToChannel(String channelId, String userId);
     Response<Channel> removeUserFromChannel(String channelId,String userId);
 
 
