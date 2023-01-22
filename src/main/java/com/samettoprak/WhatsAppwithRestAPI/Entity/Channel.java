@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -16,7 +17,8 @@ public class Channel {
     String id;
     @NotNull @Min(2) @Max(20)
     String channelName;
-    User channelAdmin;
+    LocalDateTime creationTime;
+    List<User> channelAdmin;
     List<User> users;
     List<Message> messages;
 }
